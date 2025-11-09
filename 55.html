@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>लेदुका (बन्दला) प्रिमियर लीग — Entry Card (A4)</title>
+  <!-- Premium Devanagari + Display fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#0d47a1;
+      --blue-2:#1565c0;
+      --gold:#d4af37;
+      --gold-soft:#fee9a6;
+      --red:#e53935;
+      --paper:#f8fbf6;
+      --ink:#0b2a55;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; display:grid; place-items:center; min-height:100vh;
+      background: radial-gradient(1200px 600px at 50% -10%, #061636, #020a18 60%, #00060f);
+      font-family:'Noto Sans Devanagari', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+    }
+    @page{ size:A4; margin:0 }
+    @media print{ body{ background:white } .toolbar{ display:none } }
+
+    .sheet{
+      width:210mm; height:297mm; position:relative; overflow:hidden;
+      background: var(--paper);
+      border-radius:16px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55), 0 0 0 10px rgba(255,255,255,.06) inset;
+      outline: 6px solid var(--blue);
+      filter: drop-shadow(0 30px 80px rgba(13,71,161,.45));
+    }
+    .frame-outer{ position:absolute; inset:7mm; border-radius:12px; border:3px solid var(--gold); pointer-events:none }
+    .frame-inner{ position:absolute; inset:12mm; border-radius:10px; border:3px solid var(--blue-2); pointer-events:none }
+
+    .stadium{ position:absolute; inset:0; opacity:.18; z-index:0; }
+    .stadium svg{ width:100%; height:100%; display:block; }
+
+    .shine{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(105deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.25) 100%); mix-blend-mode:overlay; opacity:.35 }
+
+    .entry{ position:absolute; top:16mm; left:18mm; z-index:3; }
+    .entry .ribbon{
+      background:linear-gradient(90deg, #ff1744, #c62828);
+      color:#fff; font-weight:900; font-size:14pt; padding:6px 16px; border-radius:10px;
+      box-shadow:0 8px 26px rgba(255,0,0,.35); letter-spacing:.3px; animation:pulse 2.2s infinite;
+    }
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+    .crest{ position:absolute; top:12mm; right:18mm; width:36mm; height:36mm; z-index:3 }
+    .crest svg{ width:100%; height:100% }
+    .bat{ transform-origin:70% 20%; animation:swing 2.6s ease-in-out infinite }
+    .ball{ transform-origin:50% 50%; animation:float 3.4s ease-in-out infinite }
+    @keyframes swing{0%{transform:rotate(-6deg)}50%{transform:rotate(8deg)}100%{transform:rotate(-6deg)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+    header{ position:relative; z-index:2; text-align:center; margin-top:26mm }
+    .title{ font-family:'Rajdhani', sans-serif; font-weight:800; font-size:30pt; color:var(--blue);
+      letter-spacing:1.2px; text-transform:none; margin:0; padding:0 10mm; }
+    .title .gold{ color:var(--gold); }
+    .title-glow{ position:absolute; left:50%; transform:translateX(-50%); top:-6mm; width:60%; height:12mm; filter:blur(18px);
+      background: radial-gradient(closest-side, rgba(212,175,55,.55), rgba(212,175,55,0)); opacity:.7; pointer-events:none }
+    .subtitle{ margin:.8mm 0 0; font-weight:800; color:var(--blue-2); font-size:15pt }
+
+    .meta{ display:flex; justify-content:space-between; gap:8mm; margin:10mm 18mm 0; z-index:2; position:relative }
+    .meta .chip{ flex:1; background:white; border:2px solid var(--blue-2); color:var(--blue);
+      border-radius:12px; padding:8px 12px; font-weight:800; font-size:12.5pt; box-shadow:0 6px 18px rgba(0,0,0,.12) }
+
+    hr.rule{ height:3px; border:none; margin:8mm 18mm; background:linear-gradient(90deg, var(--gold), var(--blue)); opacity:.85 }
+
+    .intro{ margin:0 18mm; background:linear-gradient(0deg, rgba(255,255,255,.95), rgba(255,255,255,.9));
+      border-left:6px solid var(--red); border-radius:12px; padding:10px 14px; font-weight:700; color:#8d1717;
+      box-shadow: 0 8px 20px rgba(0,0,0,.12) }
+
+    .section{ margin:10mm 18mm 0; z-index:2; position:relative }
+    .section h2{ text-align:center; color:var(--blue); font-size:18pt; margin:0 0 6mm; font-weight:900; letter-spacing:.5px }
+    .cards{ display:grid; grid-template-columns:1fr; gap:6mm }
+
+    .card-piece{ background:linear-gradient(120deg, #ffffff, #f7fbff); border:2px solid var(--gold); border-radius:14px; padding:10px 14px;
+      box-shadow:0 10px 24px rgba(0,0,0,.12) }
+    .card-piece ol{ margin:0; padding-left:18px; }
+    .card-piece li{ margin:6px 0; line-height:1.7; font-size:12.8pt; color:#1d2f55 }
+    .card-piece li::marker{ color:var(--red); font-weight:900 }
+
+    .contacts{ display:grid; grid-template-columns:repeat(3, 1fr); gap:6mm }
+    .contact{
+      background:linear-gradient(135deg, #e3f2fd, #ffffff);
+      border:2px solid var(--blue-2); border-radius:12px; padding:10px 12px; text-align:center;
+      color:var(--blue); font-weight:900; font-size:12.5pt; box-shadow:0 8px 20px rgba(0,0,0,.1)
+    }
+    .contact .role{ display:block; font-size:11.5pt; opacity:.85 }
+
+    .footer{ position:absolute; left:0; right:0; bottom:12mm; text-align:center; color:var(--blue);
+      font-weight:800; font-size:11.5pt }
+
+    .toolbar{ position:fixed; left:16px; right:16px; bottom:16px; display:flex; gap:10px; justify-content:center; z-index:9 }
+    .toolbar button{ border:none; padding:10px 14px; border-radius:12px; background:var(--blue); color:white; font-weight:800; cursor:pointer; box-shadow:0 6px 18px rgba(13,71,161,.35) }
+    .toolbar button.gold{ background:var(--gold); color:#0b1f46 }
+
+    .sparkle{ position:absolute; width:6px; height:6px; background:radial-gradient(circle, #fff, #ffd35c 60%, transparent 70%); border-radius:50%; pointer-events:none }
+  </style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+
+    <div class="stadium" aria-hidden="true">
+      <svg viewBox="0 0 1200 1700" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#4caf50"/>
+            <stop offset="100%" stop-color="#0d572f"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="600" cy="1100" rx="560" ry="300" fill="url(#g1)" />
+        <rect x="560" y="880" width="80" height="460" rx="12" fill="#d7c8a1" opacity=".95" />
+        <circle cx="600" cy="1100" r="220" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="6" />
+        <circle cx="600" cy="1100" r="360" fill="none" stroke="#ffffff" stroke-opacity=".25" stroke-width="6" />
+        <ellipse cx="600" cy="980" rx="620" ry="250" fill="#173a69" opacity=".35" />
+        <ellipse cx="600" cy="920" rx="680" ry="260" fill="#0b2447" opacity=".25" />
+        <g fill="#ffffff" opacity=".4">
+          <rect x="200" y="700" width="14" height="120" rx="4" />
+          <rect x="986" y="700" width="14" height="120" rx="4" />
+          <circle cx="207" cy="688" r="12" />
+          <circle cx="993" cy="688" r="12" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="shine" aria-hidden="true"></div>
+
+    <div class="entry"><span class="ribbon">ENTRY ₹1100</span></div>
+    <div class="crest" title="League Crest">
+      <svg viewBox="0 0 240 240">
+        <path d="M120 12 L210 54 V128 C210 168 170 206 120 222 C70 206 30 168 30 128 V54 Z" fill="#0d47a1" stroke="#d4af37" stroke-width="6"/>
+        <text x="120" y="78" text-anchor="middle" fill="#ffd94d" font-size="26" font-family="Rajdhani" font-weight="700">LPL</text>
+        <g class="bat">
+          <rect x="118" y="94" width="16" height="86" rx="8" fill="#e0b67a" />
+          <rect x="112" y="170" width="28" height="28" rx="8" fill="#f3d8a8" />
+        </g>
+        <circle class="ball" cx="88" cy="146" r="14" fill="#c62828" stroke="#ffd54f" stroke-width="3" />
+      </svg>
+    </div>
+
+    <header>
+      <div class="title-glow"></div>
+      <h1 class="title">🏆 <span class="gold">लेदुका (बन्दला)</span> प्रिमियर लीग 🏏</h1>
+      <div class="subtitle">(2025–26)</div>
+    </header>
+
+    <div class="meta">
+      <div class="chip">📍 <strong>स्थान:</strong> लेदुका स्कूल</div>
+      <div class="chip">📅 <strong>दिनांक:</strong> 13 नवम्बर से प्रारंभ</div>
+    </div>
+
+    <hr class="rule"/>
+
+    <p class="intro">✨ <em>बड़े हर्ष के साथ सूचित किया जाता है कि लेदुका स्कूल के प्रांगण में "लेखक क्रिकेट टूर्नामेंट" का आयोजन किया जा रहा है।</em></p>
+
+    <section class="section">
+      <h2>🏏 नियम व शर्तें</h2>
+      <div class="cards">
+        <div class="card-piece">
+          <ol>
+            <li>यह टूर्नामेंट 19 वर्ष उम्र तक के खिलाड़ियों के लिए रहेगा।</li>
+            <li>विजेता टीम को ₹3100 और उपविजेता टीम को ₹2100 एवं कप से सम्मानित किया जाएगा।</li>
+            <li>इस टूर्नामेंट में केवल 8 टीमें ही भाग ले सकेंगी।</li>
+            <li>सभी मैच 10 ओवर के होंगे और फाइनल 14 ओवर का खेला जाएगा।</li>
+            <li>इस टूर्नामेंट में L.B.W. छोड़कर बाकी सभी नियम लागू रहेंगे।</li>
+            <li>टूर्नामेंट में नाश्ते की कोई व्यवस्था नहीं की जाएगी।</li>
+            <li>प्रतियोगिता समाप्त होने के बाद निर्णायक समिति का निर्णय अंतिम माना जाएगा।</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>📞 Contact Numbers</h2>
+      <div class="contacts">
+        <div class="contact"><span class="role">अध्यक्ष</span> मनीष कुमार — 7371983931</div>
+        <div class="contact"><span class="role">उपाध्यक्ष</span> शिवम कुमार — 6299249859</div>
+        <div class="contact"><span class="role">सदस्य</span> पियूष कुमार — 6299249859</div>
+      </div>
+    </section>
+
+    <div class="footer">औपचारिक स्कूल/स्थानीय क्रिकेट टूर्नामेंट सूचना पत्र — रॉयल, क्लीन और प्रिंट-रेडी</div>
+
+  </div>
+
+  <div class="toolbar">
+    <button class="gold" onclick="window.print()">Print / Save as PDF (A4)</button>
+    <button onclick="exportPNG()">Save as PNG</button>
+  </div>
+
+  <script>
+    const sheet = document.getElementById('sheet');
+    function addSparkle(){
+      const s = document.createElement('div');
+      s.className='sparkle';
+      const x = 0.2 + Math.random()*0.6;
+      const y = 0.12 + Math.random()*0.18;
+      s.style.left = (x*sheet.clientWidth)+'px';
+      s.style.top  = (y*sheet.clientHeight)+'px';
+      s.style.opacity = .8;
+      sheet.appendChild(s);
+      setTimeout(()=>{ s.style.transition='opacity .9s ease'; s.style.opacity=0; }, 50);
+      setTimeout(()=>s.remove(), 1200);
+    }
+    setInterval(addSparkle, 650);
+
+    async function exportPNG(){
+      alert('सर्वश्रेष्ठ क्वालिटी के लिए Print → Save as PDF (A4) उपयोग करें। PNG चाहिए तो डेस्कटॉप ब्राउज़र से फुल-पेज स्क्रीनशॉट लें।');
+    }
+  </script>
+</body>
+</html>
